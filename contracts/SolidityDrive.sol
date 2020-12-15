@@ -1,0 +1,28 @@
+//pragma solidity ^0.5.0;
+pragma solidity >=0.4.21 <0.7.0;
+
+contract SolidityDrive {
+    struct File {
+        string hash;
+        string fileName;
+        string fileType; //In Frontend to show the type of the file
+        uint date;
+    }
+
+    mapping(address => File[]) files;
+
+    function add(string memory _hash, string memory _fileName, string memory _fileType, uint _date) public {
+        files[msg.sender].push(File({hash : _hash, fileName : _fileName, fileType : _fileType, date : _date}));
+    }
+
+    function getFile(uint _index) public view returns(string memory, string memory, string memory, uint) {
+        File memory file = files[msg.sender][_index];
+        return (file.hash, file.fileName, file.fileType, file.date);
+    }
+
+    function getLength() public view returns(uint){
+        return files[msg.sender].length;
+    }
+
+
+}

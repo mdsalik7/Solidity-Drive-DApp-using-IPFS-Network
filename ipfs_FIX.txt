@@ -1,0 +1,13 @@
+Go to IPFS settings
+In IPFS Config 
+Add these lines at the end
+
+"API": {
+  "HTTPHeaders": {
+    "Server": [ "go-ipfs/0.4.14" ],
+    "Access-Control-Allow-Methods": [ "PUT", "GET", "POST" ],
+    "Access-Control-Allow-Origin": [ "*" ]
+  }
+}
+
+This ll fix the cant fetch and other CORS problem 
